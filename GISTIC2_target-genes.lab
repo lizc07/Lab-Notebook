@@ -1,0 +1,23 @@
+PAN12 target genes selection:
+1. download suppl. table 2 from article "Pan-cancer patterns of somatic copy number alteration"
+2. pancan12 target genes = unique(union(amp significant genes, amp frequently mutation genes, del significant genes, del frequently mutation genes))
+   symbols are in accordance with PANCAN12_GISTIC2_20141017_hg19_with_miR_20120227.txt
+Individual cancer type target genes selection:
+3. COSMIC gene list = download The Sanger Institute Gene Census from COSMIC website 
+   1)transfer cosmic_gene_symbol to cosmic_hgnc_approved_gene_symbol(short as chgs)
+   two invalid gene: C12orf9  93669 --deleted
+                     RUNDC2A  84127 --fixed with SNX29 92017
+   2)setdiff(chgs,gencode[,1]) , 13 genes
+   check hgnc previous symbols, synonyms,Ensembl.Gene.ID and NCBI for the 13 genes in gencode, to find corresponding gencode gene symbol 
+     "BCL5"       "CRLF2"      "DUX4L1"     "HLA-A"      "IGH"        "IGK"        "IGL"        "NKX2-1"     "P2RY8"      "RNF217-AS1" "TRA"        "TRB"        "TRD" 
+same with BCL6                             Not_found   genes_locus  genes_locus  genes_locus   Not_found                  Not_found  genes_locusn genes_locus genes_locus
+          CRLF2|ENSG00000205755.6 DUX4                                                                P2RY8|ENSG00000182162.5
+4. HGNC complete set, offical HUGO gene symbol
+   gene list of hgnc[,EntrezID] != hgnc[,EntrezID by NCBI], is subject to EntrezID by NCBI:
+   "CCL4L1"    "CCL4L2"    "ECEL1P1"   "IQCA1L"    "LINC00205" "LINC00456" "MIR511"    "PEX5L-AS1" "SNORA73B"  "ZNF840P"
+   EntrezID:          9560    388372 100131546 102723607    257103 100507566    574446 101928790      6081 100533646
+   EntrezID by NCBI:388372      9560    260331    392843 102723489 103625683    574445 100874040     26768 100130863
+5. GISTIC2 result data (version 20141017)from firehose_get @www.firebrowse.org, 34 cancer types,
+   with reference genome annotation file hg19_GENCODE_v18_20140127.mat
+   use matlab writetable function to transfer to table with colon delimited (GISTIC2_20141017_hg19_GENCODE_v18_20140127.csv)
+6. 

@@ -20,4 +20,13 @@ same with BCL6                             Not_found   genes_locus  genes_locus 
 5. GISTIC2 result data (version 20141017)from firehose_get @www.firebrowse.org, 34 cancer types,
    with reference genome annotation file hg19_GENCODE_v18_20140127.mat
    use matlab writetable function to transfer to table with colon delimited (GISTIC2_20141017_hg19_GENCODE_v18_20140127.csv)
-6. 
+   PANCAN12 is the same as described above.
+6. get target genes in single cancer and pancan12 (R var: single_cancer_target and pan_caner_target)
+   setdiff(pan_cancer_target[,1],gencode[,1])
+   [1] "ZNF503-AS1" "FAM190A"    "MLL3"       "ANKRD20A9P"
+gencode Not_found    CCSER1      KMT2C          Not_found
+
+7. pM target genes CNV matrix
+      BLCA    BRCA     CESC    COAD     KICH    KIRC     KIRP    LIHC     LUAD     LUSC     PAAD    READ    STAD     THCA    
+M0 List,73 List,819 List,78 List,128 List,34 List,348 List,63 List,133 List,143 List,165 List,42 List,58 List,194 List,218
+M1 List,4  List,15  List,4  List,22  List,2  List,67  List,6  List,4   List,9   List,3   List,3  List,10 List,16  List,7  

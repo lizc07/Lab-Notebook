@@ -30,3 +30,13 @@ gencode Not_found    CCSER1      KMT2C          Not_found
       BLCA    BRCA     CESC    COAD     KICH    KIRC     KIRP    LIHC     LUAD     LUSC     PAAD    READ    STAD     THCA    
 M0 List,73 List,819 List,78 List,128 List,34 List,348 List,63 List,133 List,143 List,165 List,42 List,58 List,194 List,218
 M1 List,4  List,15  List,4  List,22  List,2  List,67  List,6  List,4   List,9   List,3   List,3  List,10 List,16  List,7  
+8. pM MAF matrix
+   unfiltered maf genes 
+   diff_approved <- setdiff(pm_maf_genes,hgnc_Approved) # 2677
+   diff_previous <- setdiff(diff_approved,unlist(hgnc_Previous)) # 1329
+   diff_synonyms <- setdiff(diff_previous,unlist(hgnc_Synonyms)) # 1227
+   
+   check approved, then previous at last synonyms; and match ENSG****
+9. > setdiff(setdiff(hprd_genes,hgnc_Approved),unlist(hgnc_Previous))
+[1] "$OC90$"   "$ZBTB8$"  "EPR1"     "KIAA1026" "MT-COI"
+hgnc  OC90        ZBTB8A not_found     KAZN     Not_found
